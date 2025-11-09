@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// এই কার্ডটি আমরা Home পেজ, All Properties পেজ, My Properties পেজে ব্যবহার করব
 const PropertyCard = ({ property }) => {
-    const { _id, propertyName, category, price, location, imageLink, description } = property;
+    const { _id, propertyName, category, price, location, imageLink, description, userName } = property;
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl border">
+        <div className="card w-full bg-base-100 shadow-xl border flex flex-col">
             <figure>
                 <img src={imageLink} alt={propertyName} className="h-56 w-full object-cover" />
             </figure>
-            <div className="card-body p-6">
+
+            <div className="card-body p-6 flex-grow">
+                
+                {userName && (
+                    <div className="text-xs text-gray-500 mb-2">
+                        Posted by: <span className="font-semibold">{userName}</span>
+                    </div>
+                )}
+                
                 <h2 className="card-title font-bold text-lg">{propertyName}</h2>
                 <p className="text-gray-600">{location}</p>
-                <p className="text-sm mt-2">
+                
+                <p className="text-sm mt-2 flex-grow">
                     {description.length > 100 ? `${description.substring(0, 100)}...` : description}
                 </p>
                 
