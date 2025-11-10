@@ -1,4 +1,3 @@
-// src/contexts/AuthProvider.jsx
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { 
@@ -11,66 +10,64 @@ import {
     signOut,
     updateProfile 
 } from 'firebase/auth';
-import auth from '../config/firebase.config.js'; // আমাদের কনফিগ ফাইল
+import auth from '../config/firebase.config.js'; // Firebase config
 
-// Context তৈরি
+// Context creation
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
-// কাস্টম হুক (সহজে ব্যবহারের জন্য)
+// Custom hook
 export const useAuth = () => {
     return useContext(AuthContext);
 }
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true); // লোডিং স্পিনারের জন্য
+    const [loading, setLoading] = useState(true);
 
-    // ১. ইউজার তৈরি (Register)
+    // Create user (Register)
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    // ২. ইউজার লগইন
+    // Sign in with email & password
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    // ৩. গুগল দিয়ে লগইন
+    // Google sign-in
     const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
-    // ৪. প্রোফাইল আপডেট (নাম ও ছবি)
+    // Update user profile
     const updateUserProfile = (name, photo) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photo
+            displayName: name, 
+            photoURL: photo
         });
     }
 
-    // ৫. লগআউট
+    // Sign out
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
     }
 
-    // ৬. ইউজারের অবস্থা পর্যবেক্ষণ (সবচেয়ে গুরুত্বপূর্ণ)
+    // Observe user state
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            // console.log("Current User:", currentUser);
-            setLoading(false); // লোডিং শেষ
+            setLoading(false);
         });
-        return () => {
-            return unsubscribe(); // clean-up
-        }
+        return () => unsubscribe();
     }, []);
 
-    // সব ভ্যালু context এর মাধ্যমে পাঠানো হচ্ছে
+    // Values provided to context
     const authInfo = {
         user,
         loading,

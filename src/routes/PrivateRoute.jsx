@@ -1,4 +1,4 @@
-// src/routes/PrivateRoute.jsx
+
 
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -9,17 +9,17 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    // ১. যদি লোডিং অবস্থায় থাকে, স্পিনার দেখাও
+    // spinner while loading
     if (loading) {
         return <LoadingSpinner />;
     }
 
-    // ২. যদি ইউজার লগইন করা থাকে, তাকে যেতে দাও
+    // If user is logged in, allow access
     if (user) {
         return children;
     }
 
-    // ৩. যদি লগইন করা না থাকে, লগইন পেজে পাঠিয়ে দাও
+    // If not logged in, redirect to login
     return <Navigate to="/login" state={{ from: location }} replace />;
 };
 

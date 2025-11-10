@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import './index.css' // Tailwind CSS
+import './index.css'
 
 // Toastify CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 
 // Context Providers
 import AuthProvider from './contexts/AuthProvider.jsx';
-import { ThemeProvider } from './contexts/ThemeContext.jsx'; // থিম প্রোভাইডার ইম্পোর্ট
+import { ThemeProvider } from './contexts/ThemeContext.jsx';
 
 // Layout
 import MainLayout from './layout/MainLayout.jsx';
@@ -32,51 +32,39 @@ import PropertyDetails from './pages/PropertyDetails.jsx';
 import UpdateProperty from './pages/UpdateProperty.jsx';
 import NotFound from './pages/NotFound.jsx';
 
-// রাউটার কনফিগারেশন
+// Router configuration
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <NotFound />, // 404 পেজ
+    errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/all-properties", element: <AllProperties /> },
       { 
-        path: "/property-details/:id", // ডাইনামিক রুট
+        path: "/property-details/:id",
         element: <PrivateRoute><PropertyDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`) // সার্ভার URL
+        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
       },
+      { path: "/add-properties", element: <PrivateRoute><AddProperties /></PrivateRoute> },
+      { path: "/my-properties", element: <PrivateRoute><MyProperties /></PrivateRoute> },
       { 
-        path: "/add-properties", 
-        element: <PrivateRoute><AddProperties /></PrivateRoute> 
-      },
-      { 
-        path: "/my-properties", 
-        element: <PrivateRoute><MyProperties /></PrivateRoute> 
-      },
-      { 
-        path: "/update-property/:id", // ডাইনামিক রুট
+        path: "/update-property/:id",
         element: <PrivateRoute><UpdateProperty /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`) // সার্ভার URL
+        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
       },
-      { 
-        path: "/my-ratings", 
-        element: <PrivateRoute><MyRatings /></PrivateRoute> 
-      },
+      { path: "/my-ratings", element: <PrivateRoute><MyRatings /></PrivateRoute> },
     ]
   },
-  { 
-    path: "*", // সব অ-পরিচিত রুটের জন্য
-    element: <NotFound /> 
-  }
+  { path: "*", element: <NotFound /> }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider> {/* ১. ThemeProvider বাইরে থাকবে */}
-      <AuthProvider> {/* ২. AuthProvider ভেতরে থাকবে */}
+    <ThemeProvider>
+      <AuthProvider>
         <RouterProvider router={router} />
         <ToastContainer position="top-center" autoClose={3000} />
       </AuthProvider>
