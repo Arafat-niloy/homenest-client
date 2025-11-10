@@ -111,10 +111,9 @@ const Footer = () => (
                 title="Customer Care"
                 links={[
                     { label: 'Browse Properties', to: '/all-properties' },
-                    { label: 'Property Management' },
-                    { label: 'My Ratings', to: '/my-ratings' },
+                    { label: 'Ratings', to: '/my-ratings' },
                     { label: 'Build Wardrobes' },
-                    { label: 'Floor Coverings' }
+    { label: 'Contact Us', to: '#' },
                 ]}
             />
             <LinksSection 
@@ -122,9 +121,9 @@ const Footer = () => (
                 links={[
                     { label: 'Add Property', to: '/add-properties' },
                     { label: 'Home Selling' },
-                    { label: 'Interior Design' },
-                    { label: 'Terms & Conditions' },
-                    { label: 'Privacy Policy' }
+                    { label: 'Interior Design', to: '/my-properties'  },
+    { label: 'Terms & Conditions', to: '#' },
+    { label: 'Privacy Policy', to: '#' }
                 ]}
             />
             <NewsletterSection />
