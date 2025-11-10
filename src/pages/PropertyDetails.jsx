@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import ReviewSection from '../../components/ReviewSection';
+import ReviewSection from '../components/ReviewSection';
 
 const PropertyDetails = () => {
     const property = useLoaderData();

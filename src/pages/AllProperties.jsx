@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PropertyCard from '../../components/PropertyCard';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import PropertyCard from '../components/PropertyCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const AllProperties = () => {
     const [properties, setProperties] = useState([]);
