@@ -1,5 +1,3 @@
-// src/main.jsx (FINAL ROUTER)
-
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
@@ -12,8 +10,9 @@ import './index.css' // Tailwind CSS
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-// Auth Provider
+// Context Providers
 import AuthProvider from './contexts/AuthProvider.jsx';
+import { ThemeProvider } from './contexts/ThemeContext.jsx'; // থিম প্রোভাইডার ইম্পোর্ট
 
 // Layout
 import MainLayout from './layout/MainLayout.jsx';
@@ -38,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <NotFound />, // 404 পেজ এখানেও যোগ করা যায়
+    errorElement: <NotFound />, // 404 পেজ
     children: [
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
@@ -76,9 +75,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-      <ToastContainer position="top-center" autoClose={3000} />
-    </AuthProvider>
+    <ThemeProvider> {/* ১. ThemeProvider বাইরে থাকবে */}
+      <AuthProvider> {/* ২. AuthProvider ভেতরে থাকবে */}
+        <RouterProvider router={router} />
+        <ToastContainer position="top-center" autoClose={3000} />
+      </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 )

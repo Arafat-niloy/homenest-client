@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel'; 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { motion } from 'framer-motion'; // ✨ Import motion
+
 import PropertyCard from '../components/PropertyCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -20,12 +22,22 @@ const Home = () => {
                 setLoading(false);
             }
         };
-
         fetchFeatured();
     }, []);
 
+    // Motion Variants
+    const sectionVariant = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
     return (
         <div>
+
             {/* Carousel Section */}
             <Carousel 
                 showThumbs={false} 
@@ -80,7 +92,13 @@ const Home = () => {
             <div className="container mx-auto px-4 py-16">
 
                 {/* Featured Properties */}
-                <section className="text-center">
+                <motion.section
+                    className="text-center"
+                    variants={sectionVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <h2 className="text-3xl font-bold mb-4">Featured Real Estate</h2>
                     <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
                         Check out our latest and most popular properties that have just been listed.
@@ -95,10 +113,16 @@ const Home = () => {
                             ))}
                         </div>
                     )}
-                </section>
+                </motion.section>
 
                 {/* Why Choose Us */}
-                <section className="mt-20 py-16 bg-base-200 rounded-lg">
+                <motion.section
+                    className="mt-20 py-16 bg-base-200 rounded-lg"
+                    variants={sectionVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <div className="text-center mb-12 px-4">
                         <h2 className="text-3xl font-bold">Why Choose HomeNest?</h2>
                         <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -122,10 +146,16 @@ const Home = () => {
                             <p>A user-friendly interface combined with top-tier security for your peace of mind.</p>
                         </div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Testimonials */}
-                <section className="mt-20 text-center">
+                <motion.section
+                    className="mt-20 text-center"
+                    variants={sectionVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <h2 className="text-3xl font-bold mb-10">What Our Clients Say</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -143,56 +173,44 @@ const Home = () => {
                             <h4 className="font-bold mt-4">- Michael B. (Seller)</h4>
                         </div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Agents */}
-                <section className="mt-20 text-center">
+                <motion.section
+                    className="mt-20 text-center"
+                    variants={sectionVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <h2 className="text-3xl font-bold mb-10">Meet Our Top Agents</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="card card-compact bg-base-100 shadow-md">
-                            <figure>
-                                <img 
-                                    src="https://i.ibb.co/3kXp4gT/agent1.jpg" 
-                                    alt="Agent 1" 
-                                    className="h-64 w-full object-cover" 
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="font-bold text-lg">Emily White</h3>
-                                <p>Senior Agent, Luxury Homes</p>
-                            </div>
-                        </div>
-
-                        <div className="card card-compact bg-base-100 shadow-md">
-                            <figure>
-                                <img 
-                                    src="https://i.ibb.co/X3YxH1q/agent2.jpg" 
-                                    alt="Agent 2" 
-                                    className="h-64 w-full object-cover" 
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="font-bold text-lg">David Lee</h3>
-                                <p>Commercial Properties Expert</p>
-                            </div>
-                        </div>
-
-                        <div className="card card-compact bg-base-100 shadow-md">
-                            <figure>
-                                <img 
-                                    src="https://i.ibb.co/bKzB0jC/agent3.jpg" 
-                                    alt="Agent 3" 
-                                    className="h-64 w-full object-cover" 
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h3 className="font-bold text-lg">Chloe Brown</h3>
-                                <p>Rental Specialist</p>
-                            </div>
-                        </div>
+                        {[
+                            { name: 'Emily White', role: 'Senior Agent, Luxury Homes', img: 'https://i.ibb.co/3kXp4gT/agent1.jpg' },
+                            { name: 'David Lee', role: 'Commercial Properties Expert', img: 'https://i.ibb.co/X3YxH1q/agent2.jpg' },
+                            { name: 'Chloe Brown', role: 'Rental Specialist', img: 'https://i.ibb.co/bKzB0jC/agent3.jpg' }
+                        ].map((agent, i) => (
+                            <motion.div 
+                                key={i} 
+                                className="card card-compact bg-base-100 shadow-md"
+                                variants={sectionVariant}
+                            >
+                                <figure>
+                                    <img 
+                                        src={agent.img} 
+                                        alt={agent.name} 
+                                        className="h-64 w-full object-cover" 
+                                    />
+                                </figure>
+                                <div className="card-body">
+                                    <h3 className="font-bold text-lg">{agent.name}</h3>
+                                    <p>{agent.role}</p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
-                </section>
+                </motion.section>
 
             </div>
         </div>
