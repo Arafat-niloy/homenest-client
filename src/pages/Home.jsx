@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel'; 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import { motion } from 'framer-motion'; // ✨ Import motion
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // 1. লিঙ্ক ইম্পোর্ট করা হয়েছে
 
 import PropertyCard from '../components/PropertyCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -14,6 +15,7 @@ const Home = () => {
     useEffect(() => {
         const fetchFeatured = async () => {
             try {
+                // ক্লায়েন্ট ডেপ্লয় করার সময় এই URL পরিবর্তন করতে হবে
                 const response = await axios.get('http://localhost:5000/properties/featured');
                 setFeaturedProperties(response.data);
                 setLoading(false);
@@ -25,7 +27,7 @@ const Home = () => {
         fetchFeatured();
     }, []);
 
-    // Motion Variants
+    // Motion Variants (অ্যানিমেশনের জন্য)
     const sectionVariant = {
         hidden: { opacity: 0, y: 50 },
         visible: { 
@@ -55,8 +57,14 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
                         <h1 className="text-3xl md:text-5xl font-bold">Find Your Dream Home</h1>
-                        <p className="mt-4 text-lg md:text-xl">Discover the best properties for sale and rent in your area.</p>
-                        <button className="btn btn-primary mt-6 text-white">Explore Now</button>
+                        <p className="mt-4 text-lg md:text-xl">
+                            Discover the best properties for sale and rent in your area.
+                        </p>
+
+                        {/* === ২. বাটনটি এখন লিঙ্ক করা === */}
+                        <Link to="/all-properties">
+                            <button className="btn btn-primary mt-6 text-white">Explore Now</button>
+                        </Link>
                     </div>
                 </div>
 
@@ -69,8 +77,14 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
                         <h1 className="text-3xl md:text-5xl font-bold">List Your Property With Us</h1>
-                        <p className="mt-4 text-lg md:text-xl">Reach thousands of potential buyers and tenants easily.</p>
-                        <button className="btn btn-primary mt-6 text-white">Add Listing</button>
+                        <p className="mt-4 text-lg md:text-xl">
+                            Reach thousands of potential buyers and tenants easily.
+                        </p>
+
+                        {/* === ৩. বাটনটি এখন লিঙ্ক করা === */}
+                        <Link to="/add-properties">
+                            <button className="btn btn-primary mt-6 text-white">Add Listing</button>
+                        </Link>
                     </div>
                 </div>
 
@@ -83,8 +97,14 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
                         <h1 className="text-3xl md:text-5xl font-bold">Expert Agents Available</h1>
-                        <p className="mt-4 text-lg md:text-xl">Our trusted agents are here to guide you every step.</p>
-                        <button className="btn btn-primary mt-6 text-white">Contact Us</button>
+                        <p className="mt-4 text-lg md:text-xl">
+                            Our trusted agents are here to guide you every step.
+                        </p>
+
+                        {/* === ৪. বাটনটি এখন ইমেইল লিঙ্ক করা === */}
+                        <a href="mailto:support@homenest.com">
+                            <button className="btn btn-primary mt-6 text-white">Contact Us</button>
+                        </a>
                     </div>
                 </div>
             </Carousel>
@@ -138,7 +158,7 @@ const Home = () => {
 
                         <div className="card bg-base-100 shadow-md p-6 text-center">
                             <h3 className="font-bold text-xl text-primary mb-3">Trusted by Thousands</h3>
-                            <p>Our platform is the go-to choice for buyers, sellers, and renters looking for reliability.</p>
+                            <p>Our platform is the top choice for buyers, sellers, and renters looking for reliability.</p>
                         </div>
 
                         <div className="card bg-base-100 shadow-md p-6 text-center">
@@ -161,14 +181,14 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="p-6 border rounded-lg shadow-sm bg-base-100">
                             <p className="italic">
-                                "HomeNest made finding my new apartment incredibly easy! The search filters are amazing and I found exactly what I was looking for in just a few days."
+                                "HomeNest made finding my new apartment incredibly easy! The search filters are amazing and I found exactly what I was looking for."
                             </p>
                             <h4 className="font-bold mt-4">- Sarah J. (Tenant)</h4>
                         </div>
 
                         <div className="p-6 border rounded-lg shadow-sm bg-base-100">
                             <p className="italic">
-                                "Selling my property was a breeze. I listed it on HomeNest and got multiple offers within the first week. Highly recommend this platform!"
+                                "Selling my property was a breeze. I listed it on HomeNest and received multiple offers within the first week."
                             </p>
                             <h4 className="font-bold mt-4">- Michael B. (Seller)</h4>
                         </div>
