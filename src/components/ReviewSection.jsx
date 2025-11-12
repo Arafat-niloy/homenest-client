@@ -66,7 +66,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
                 <form onSubmit={handleSubmit(onSubmitReview)} className="p-4 bg-base-200 rounded-lg shadow">
                     <h4 className="font-semibold text-lg mb-4">Leave Your Review</h4>
 
-                    <div className="form-control mb-4">
+                    <div className="form-control mb-4 space-x-3">
                         <label className="label">
                             <span className="label-text">Rating (1 to 5)</span>
                         </label>
@@ -81,7 +81,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
                         {errors.rating && <span className="text-red-500 text-xs mt-1">{errors.rating.message}</span>}
                     </div>
 
-                    <div className="form-control mb-4">
+                    <div className="form-control mb-4 space-x-4">
                         <label className="label">
                             <span className="label-text">Review Text</span>
                         </label>
