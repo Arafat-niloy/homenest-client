@@ -1,13 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'; // ১. motion ইম্পোর্ট করুন
+
+// ২. কার্ডের হোভার অ্যানিমেশন অবজেক্ট
+const cardHoverEffect = {
+  y: -10, // ১০ পিক্সেল উপরে উঠবে
+  scale: 1.03, // ৩% বড় হবে
+  transition: { type: "spring", stiffness: 300, damping: 15 } // স্প্রিং ইফেক্ট
+};
 
 const PropertyCard = ({ property }) => {
     const { _id, propertyName, category, price, location, imageLink, description, userName } = property;
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl border flex flex-col">
+        // ৩. div-কে motion.div বানান এবং whileHover যোগ করুন
+        <motion.div 
+            className="card w-full bg-base-100 shadow-xl border flex flex-col"
+            whileHover={cardHoverEffect}
+        >
             <figure>
-                <img src={imageLink} alt={propertyName} className="h-56 w-full object-cover" />
+                {/* ছবি লোড না হলে একটি ফলব্যাক (fallback) ইমেজ দিন */}
+                <img 
+                    src={imageLink || '/images/slider1.jpg'} 
+                    alt={propertyName} 
+                    className="h-56 w-full object-cover" 
+                />
             </figure>
 
             <div className="card-body p-6 flex-grow">
@@ -36,7 +53,7 @@ const PropertyCard = ({ property }) => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

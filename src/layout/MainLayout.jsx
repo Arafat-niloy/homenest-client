@@ -6,12 +6,16 @@ import Footer from '../components/Footer'; // আমরা 'components' ফো�
 const MainLayout = () => {
     return (
         <div>
-            <Navbar />
+            <div className='bg-gradient-to-b from-[#c9d6ff80] to-[#e2e2e260]'>
+                
+                <Navbar />
             
             {/* পেজগুলো এখানে লোড হবে */}
-            <main className="min-h-[calc(100vh-300px)]"> 
+            <main className="min-h-[calc(100vh-300px)]  "> 
                 <Outlet />
             </main>
+                </div>
+                
             
             <Footer />
         </div>
