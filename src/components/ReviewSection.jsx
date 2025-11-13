@@ -15,7 +15,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
     const fetchReviews = async () => {
         setLoadingReviews(true);
         try {
-            const response = await axios.get(`http://localhost:5000/reviews/${propertyId}`);
+            const response = await axios.get(`https://homenest-server-one.vercel.app/reviews/${propertyId}`);
             setReviews(response.data);
         } catch (error) {
             console.error("Failed to fetch reviews:", error);
@@ -43,7 +43,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/reviews', reviewData);
+            const response = await axios.post('https://homenest-server-one.vercel.app/reviews', reviewData);
             if (response.data.insertedId) {
                 toast.success("Review submitted successfully!");
                 reset();
