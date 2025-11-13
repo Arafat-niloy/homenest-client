@@ -45,7 +45,7 @@ const MyRatings = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {myRatings.map(review => (
-                        <div key={review._id} className="card w-full bg-base-100 shadow-xl border">
+                        <div key={review._id} className="card w-full bg-base-100 shadow-xl hover:shadow-2xl ">
                             <div className="card-body">
                                 
                                 <h3 className="card-title text-lg">

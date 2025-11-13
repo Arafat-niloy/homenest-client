@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     // NavLink-এর স্টাইল (hover ফিক্স সহ)
-    const activeLinkClass = "bg-primary text-primary-content rounded-full hover:brightness-90 transition-all duration-300";
+    const activeLinkClass = "bg-purple-600 text-primary-content rounded-full hover:brightness-90 transition-all duration-300";
     const normalLinkClass = "hover:bg-base-300 rounded-full transition-colors duration-300";
 
     const navLinks = (
@@ -41,7 +41,7 @@ const Navbar = () => {
             
             {/* Navbar Start (Logo) */}
             <div className="navbar-start">
-                <div className="dropdown">
+                <div className="dropdown ">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* লোগোর সাথে আইকন */}
-                <Link to="/" className="btn btn-ghost text-2xl font-bold text-primary">
+                <Link to="/" className="btn btn-ghost text-purple-600 text-2xl font-bold text-primary">
                     <TbBuildingFortress />
                     HomeNest
                 </Link>

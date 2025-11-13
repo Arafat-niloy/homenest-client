@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/properties/featured");
+        const response = await axios.get("https://homenest-server-one.vercel.app/properties/featured");
         setFeaturedProperties(response.data);
       } catch (error) {
         console.error("Failed to fetch featured properties:", error);
@@ -249,9 +249,9 @@ const Home = () => {
           <h2 className="text-3xl font-bold mb-10 text-center">Meet Our Top Agents</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Emily White", role: "Senior Agent, Luxury Homes", img: "/images/agent1.png" },
-              { name: "David Lee", role: "Commercial Properties Expert", img: "/images/agent2.png" },
-              { name: "Chloe Brown", role: "Rental Specialist", img: "/images/agent3.png" },
+              { name: "Emily White", role: "Senior Agent, Luxury Homes", img: "/images/agent1.jpg" },
+              { name: "David Lee", role: "Commercial Properties Expert", img: "/images/agent2.jpg" },
+              { name: "Chloe Brown", role: "Rental Specialist", img: "/images/agent3.jpg" },
             ].map((agent, index) => (
               
               <motion.div

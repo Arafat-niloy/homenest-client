@@ -22,7 +22,7 @@ const AddProperties = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/properties', propertyData);
+      const response = await axios.post('https://homenest-server-one.vercel.app/properties', propertyData);
       if (response.data.insertedId) {
         toast.success("Property added successfully!");
         reset();
@@ -34,7 +34,7 @@ const AddProperties = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-10 bg-base-200">
+    <div className="container mx-auto p-4 md:p-10">
       <div className="max-w-4xl mx-auto bg-base-100 shadow-xl rounded-lg p-6 md:p-10">
         <h2 className="text-3xl font-bold text-center mb-8 text-primary">Add a New Property Listing</h2>
         

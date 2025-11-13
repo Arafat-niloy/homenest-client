@@ -6,9 +6,11 @@ import {
     FaInstagram, 
     FaPaperPlane, 
     FaArrowUp,
-    FaHome
+    
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { TbBuildingFortress } from "react-icons/tb";
+
 
 // === Scroll-to-Top Button ===
 const ScrollToTopButton = () => {
@@ -39,7 +41,7 @@ const ScrollToTopButton = () => {
 const LogoSection = () => (
     <div className="flex flex-col gap-4">
         <Link to="/" className="flex items-center gap-2 mb-2">
-            <FaHome className="text-4xl text-purple-600" />
+            <TbBuildingFortress className="text-4xl text-purple-400" />
             <span className="text-3xl font-bold text-white">HomeNest</span>
         </Link>
         <p className="text-gray-300">

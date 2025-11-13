@@ -44,7 +44,7 @@ const PropertyCard = ({ property }) => {
         </div>
 
         <div className="card-actions justify-end mt-4">
-          <Link to={`/property-details/${_id}`}>
+          <Link to={`/property-details/${property._id}`}>
             <button className="btn btn-primary btn-sm text-white">View Details</button>
           </Link>
         </div>

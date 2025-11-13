@@ -13,7 +13,7 @@ const AllProperties = () => {
     const fetchProperties = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/properties", {
+        const response = await axios.get("https://homenest-server-one.vercel.app/properties", {
           params: {
             search: searchTerm,
             sort: sortOrder,

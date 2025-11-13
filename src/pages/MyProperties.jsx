@@ -78,7 +78,7 @@ const MyProperties = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {myProperties.map(property => (
-                        <div key={property._id} className="card w-full bg-base-100 shadow-xl border">
+                        <div key={property._id} className="card w-full bg-base-100 shadow-xl hover:shadow-2xl">
                             <figure>
                                 <img 
                                     src={property.imageLink} 
