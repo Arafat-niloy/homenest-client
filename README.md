@@ -1,5 +1,5 @@
 # 🏠 HomeNest - Your Dream Property, Simplified
-**Live Site:** [https://cute-kelpie-fadb6d.netlify.app/](https://your-client-site.netlify.app)  
+**Live Site:** [https://cute-kelpie-fadb6d.netlify.app/](https://cute-kelpie-fadb6d.netlify.app/)  
 
 HomeNest is a modern real estate listing platform where property owners can post their available rentals or sale listings, and users can browse, search, and filter properties by location, price, or type. It provides a seamless experience for both property owners and seekers.
 
