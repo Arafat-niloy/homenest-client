@@ -137,7 +137,7 @@ const Home = () => {
           {/* ২. হেডিং এবং প্যারাগ্রাফকে একটি আলাদা div-এ text-center দেওয়া হয়েছে */}
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">Featured Real Estate</h2>
-            <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+            <p className="font-medium  mb-10 max-w-2xl mx-auto">
               Check out our latest and most popular properties that have just been listed.
             </p>
           </div>
@@ -165,7 +165,7 @@ const Home = () => {
         >
           <div className="text-center mb-12 px-4">
             <h2 className="text-3xl font-bold">Why Choose HomeNest?</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="font-medium text-lg mt-4 max-w-2xl mx-auto">
               We provide a seamless and trustworthy experience for all your real estate needs.
             </p>
           </div>

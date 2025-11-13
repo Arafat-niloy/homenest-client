@@ -1,10 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
 
 // Toastify CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,30 +32,32 @@ import NotFound from './pages/NotFound.jsx';
 // Router configuration
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <MainLayout />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
-      { path: "/all-properties", element: <AllProperties /> },
-      { 
-        path: "/property-details/:id",
+      { path: '/', element: <Home /> },
+      { path: '/login', element: <Login /> },
+      { path: '/register', element: <Register /> },
+      { path: '/all-properties', element: <AllProperties /> },
+      {
+        path: '/property-details/:id/:slug',
         element: <PrivateRoute><PropertyDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://homenest-server-one.vercel.app/properties/${params.id}`)
       },
-      { path: "/add-properties", element: <PrivateRoute><AddProperties /></PrivateRoute> },
-      { path: "/my-properties", element: <PrivateRoute><MyProperties /></PrivateRoute> },
-      { 
-        path: "/update-property/:id",
+      { path: '/add-properties', element: <PrivateRoute><AddProperties /></PrivateRoute> },
+      { path: '/my-properties', element: <PrivateRoute><MyProperties /></PrivateRoute> },
+      {
+        path: '/update-property/:id',
         element: <PrivateRoute><UpdateProperty /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://homenest-server-one.vercel.app/properties/${params.id}`)
       },
-      { path: "/my-ratings", element: <PrivateRoute><MyRatings /></PrivateRoute> },
-    ]
+      { path: '/my-ratings', element: <PrivateRoute><MyRatings /></PrivateRoute> },
+    ],
   },
-  { path: "*", element: <NotFound /> }
+  { path: '*', element: <NotFound /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -69,5 +68,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ToastContainer position="top-center" autoClose={3000} />
       </AuthProvider>
     </ThemeProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
