@@ -43,7 +43,7 @@ const AllProperties = () => {
     <div className="container mx-auto px-4 py-16">
       <section className="text-center">
         <h2 className="text-4xl font-bold mb-4">All Properties</h2>
-        <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+        <p className=" mb-10 max-w-2xl mx-auto">
           Browse our complete collection of properties. Use the search and sort
           options to find exactly what you're looking for.
         </p>
@@ -98,7 +98,7 @@ const AllProperties = () => {
         ) : (
           <>
             {properties.length === 0 ? (
-              <p className="text-center text-xl text-gray-500">
+              <p className="text-center text-xl">
                 No properties found matching your criteria.
               </p>
             ) : (

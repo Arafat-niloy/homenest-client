@@ -33,7 +33,7 @@ const UpdateProperty = () => {
         };
 
         try {
-            const response = await axios.put(`http://localhost:5000/properties/${id}`, updatedPropertyData);
+            const response = await axios.put(`https://homenest-server-one.vercel.app/properties/${id}`, updatedPropertyData);
             
             if (response.data.modifiedCount > 0) {
                 toast.success("Property updated successfully!");

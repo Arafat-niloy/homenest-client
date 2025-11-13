@@ -66,7 +66,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-200 py-10 overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen  py-10 overflow-hidden">
       <motion.div
         className="flex items-center flex-col lg:flex-row-reverse lg:justify-between lg:gap-36"
         variants={containerVariant}

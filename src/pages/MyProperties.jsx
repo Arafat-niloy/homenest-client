@@ -64,13 +64,13 @@ const MyProperties = () => {
     <div className="container mx-auto px-4 py-16 min-h-screen">
       <section className="text-center mb-12">
         <h2 className="text-4xl font-bold">My Properties</h2>
-        <p className="text-gray-600 mt-2">
+        <p className=" mt-2">
           Here are all the properties you have listed on HomeNest.
         </p>
       </section>
 
       {myProperties.length === 0 ? (
-        <p className="text-center text-xl text-gray-500">
+        <p className="text-center text-xl">
           You have not added any properties yet.
           <Link to="/add-properties" className="text-primary link ml-2">
             Add one now!
@@ -93,12 +93,15 @@ const MyProperties = () => {
 
               <div className="card-body p-6">
                 <h2 className="card-title font-bold text-lg">{property.propertyName}</h2>
-                <p className="text-gray-600">{property.location}</p>
+                <p className="">{property.location}</p>
+                
+                <span className="badge badge-accent badge-outline font-semibold">{property.category}</span>
+
                 <span className="text-xl font-bold text-primary">
                   ${property.price.toLocaleString()}
                 </span>
 
-                <p className="text-xs text-gray-500 mt-2">
+                <p className=" text-black  mt-2">
                   Posted: {new Date(property.createdAt).toLocaleDateString()}
                 </p>
 

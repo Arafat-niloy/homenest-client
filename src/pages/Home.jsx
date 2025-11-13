@@ -40,7 +40,6 @@ const Home = () => {
     },
   };
 
-  // কার্ডের হোভার অ্যানিমেশন
   const cardHoverEffect = {
     y: -10,
     scale: 1.03,
@@ -126,15 +125,13 @@ const Home = () => {
       {/* Main Sections */}
       <div className="container mx-auto px-4 py-16">
         
-        {/* === Featured Properties (Left-Align Fix) === */}
+        {/* Featured Properties  */}
         <motion.section
-          // className="text-center" <-- ১. এখান থেকে text-center সরানো হয়েছে
           variants={sectionVariant}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* ২. হেডিং এবং প্যারাগ্রাফকে একটি আলাদা div-এ text-center দেওয়া হয়েছে */}
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">Featured Real Estate</h2>
             <p className="font-medium  mb-10 max-w-2xl mx-auto">
@@ -142,13 +139,11 @@ const Home = () => {
             </p>
           </div>
 
-          {/* ৩. এখন এই গ্রিডটি আর text-center পাবে না */}
           {loading ? (
             <LoadingSpinner />
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredProperties.map((property) => (
-                // PropertyCard.jsx এখন সোজাসুজি (left-aligned) দেখাবে
                 <PropertyCard key={property._id} property={property} />
               ))}
             </div>
@@ -172,7 +167,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
             
             <motion.div 
-              className="card bg-base-100 shadow-md p-6 text-left" // text-left আছে
+              className="card bg-base-100 shadow-md p-6 text-left" 
               whileHover={cardHoverEffect}
             >
               <h3 className="font-bold text-xl text-primary mb-3">Wide Range of Properties</h3>
@@ -183,7 +178,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div 
-              className="card bg-base-100 shadow-md p-6 text-left" // text-left আছে
+              className="card bg-base-100 shadow-md p-6 text-left" 
               whileHover={cardHoverEffect}
             >
               <h3 className="font-bold text-xl text-primary mb-3">Trusted by Thousands</h3>
@@ -194,7 +189,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div 
-              className="card bg-base-100 shadow-md p-6 text-left" // text-left আছে
+              className="card bg-base-100 shadow-md p-6 text-left" 
               whileHover={cardHoverEffect}
             >
               <h3 className="font-bold text-xl text-primary mb-3">Easy & Secure</h3>
@@ -216,7 +211,7 @@ const Home = () => {
           <h2 className="text-3xl font-bold mb-10 text-center">What Our Clients Say</h2> 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
-              className="p-6 border rounded-lg shadow-sm bg-base-100 text-left" // text-left আছে
+              className="p-6 border rounded-lg shadow-sm bg-base-100 text-left" 
               whileHover={cardHoverEffect}
             >
               <p className="italic">
@@ -226,7 +221,7 @@ const Home = () => {
               <h4 className="font-bold mt-4">- Sarah J. (Tenant)</h4>
             </motion.div>
             <motion.div 
-              className="p-6 border rounded-lg shadow-sm bg-base-100 text-left" // text-left আছে
+              className="p-6 border rounded-lg shadow-sm bg-base-100 text-left" 
               whileHover={cardHoverEffect}
             >
               <p className="italic">
@@ -263,7 +258,7 @@ const Home = () => {
                 <figure>
                   <img src={agent.img} alt={agent.name} className="h-64 w-full object-cover" />
                 </figure>
-                <div className="card-body items-start text-left"> {/* text-left আছে */}
+                <div className="card-body items-start text-left"> 
                   <h3 className="font-bold text-lg">{agent.name}</h3>
                   <p>{agent.role}</p>
                 </div>

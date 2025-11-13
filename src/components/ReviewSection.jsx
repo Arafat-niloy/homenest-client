@@ -110,7 +110,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
                 ) : (
                     <div className="space-y-6">
                         {reviews.length === 0 ? (
-                            <p className="text-gray-500">No reviews yet. Be the first to review!</p>
+                            <p className="">No reviews yet. Be the first to review!</p>
                         ) : (
                             reviews.map(review => (
                                 <div key={review._id} className="p-4 border rounded-lg shadow-sm">
@@ -122,7 +122,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
                                         </div>
                                         <div>
                                             <span className="font-semibold">{review.reviewerName}</span>
-                                            <span className="text-xs text-gray-500 ml-2">
+                                            <span className="text-xs  ml-2">
                                                 {new Date(review.createdAt).toLocaleDateString()}
                                             </span>
                                         </div>
@@ -141,7 +141,7 @@ const ReviewSection = ({ propertyId, propertyName }) => {
                                         ))}
                                     </div>
 
-                                    <p className="text-gray-700">{review.reviewText}</p>
+                                    <p className="">{review.reviewText}</p>
                                 </div>
                             ))
                         )}

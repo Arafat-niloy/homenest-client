@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -37,7 +36,7 @@ const ScrollToTopButton = () => {
     );
 };
 
-// === Logo & Description Section ===
+//  Logo & Description Section 
 const LogoSection = () => (
     <div className="flex flex-col gap-4">
         <Link to="/" className="flex items-center gap-2 mb-2">
@@ -64,7 +63,7 @@ const LogoSection = () => (
     </div>
 );
 
-// === Links Section ===
+//  Links Section 
 const LinksSection = ({ title, links }) => (
     <div>
         <h3 className="text-white font-semibold mb-2 uppercase">{title}</h3>
@@ -85,7 +84,7 @@ const LinksSection = ({ title, links }) => (
     </div>
 );
 
-// === Newsletter Section ===
+//  Newsletter Section 
 const NewsletterSection = () => (
     <div>
         <h3 className="text-white font-semibold mb-2 uppercase">Newsletter</h3>
@@ -104,7 +103,7 @@ const NewsletterSection = () => (
     </div>
 );
 
-// === Footer Component ===
+//  Footer Component 
 const Footer = () => (
     <>
         <footer className="bg-[#1e2733] text-gray-400 p-10 grid grid-cols-1 md:grid-cols-4 gap-8">

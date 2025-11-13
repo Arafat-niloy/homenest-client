@@ -37,12 +37,12 @@ const PropertyDetails = () => {
                         <span className="badge badge-lg badge-accent font-semibold">{category}</span>
                     </div>
 
-                    <p className="text-2xl font-bold text-gray-800 mb-2">${price.toLocaleString()}</p>
-                    <p className="text-lg text-gray-600 mb-6">{location}</p>
+                    <p className="text-2xl font-bold  mb-2">${price.toLocaleString()}</p>
+                    <p className="text-lg  mb-6">{location}</p>
 
                     {/* Description */}
                     <h3 className="text-xl font-semibold mb-2">Description</h3>
-                    <p className="text-gray-700 whitespace-pre-wrap">{description}</p>
+                    <p className=" whitespace-pre-wrap">{description}</p>
 
                     {/* Posted By */}
                     <div className="divider">Posted By</div>
@@ -57,7 +57,7 @@ const PropertyDetails = () => {
                         </div>
                         <div>
                             <h4 className="font-bold text-lg">{userName}</h4>
-                            <p className="text-gray-600">{userEmail}</p>
+                            <p className="">{userEmail}</p>
                         </div>
                     </div>
 

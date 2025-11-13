@@ -14,7 +14,7 @@ import { ThemeProvider } from './contexts/ThemeContext.jsx';
 // Layout
 import MainLayout from './layout/MainLayout.jsx';
 
-// Routes & Private Route
+// Private Route
 import PrivateRoute from './routes/PrivateRoute.jsx';
 
 // Pages
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       { path: '/register', element: <Register /> },
       { path: '/all-properties', element: <AllProperties /> },
       {
-        path: '/property-details/:id/:slug',
+        path: '/property-details/:id',
         element: <PrivateRoute><PropertyDetails /></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`https://homenest-server-one.vercel.app/properties/${params.id}`)
