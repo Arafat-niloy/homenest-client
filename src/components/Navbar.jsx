@@ -26,12 +26,12 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
+        <NavLink to="/" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
+        <NavLink to="/all-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
           All Properties
         </NavLink>
       </li>
@@ -39,17 +39,17 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <NavLink to="/add-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
+            <NavLink to="/add-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
               Add Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
+            <NavLink to="/my-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
               My Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-ratings" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
+            <NavLink to="/my-ratings" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
               My Ratings
             </NavLink>
           </li>
@@ -59,13 +59,13 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar shadow px-4 ">
+    <nav className="navbar shadow px-4 md:px-6 lg:px-10 bg-base-100 sticky top-0 z-[100]">
       {/* Left Section */}
       <div className="navbar-start flex items-center">
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="btn btn-ghost lg:hidden text-2xl mr-2"
+          className="btn btn-ghost text-2xl mr-2 lg:hidden"
           aria-label="Toggle menu"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
@@ -78,10 +78,10 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Desktop Menu */}
-      <div className="navbar-center hidden lg:flex">
+      {/* Center Menu (Tablet & Desktop) */}
+      <div className="hidden md:flex navbar-center">
         <div className="bg-base-200 rounded-full p-1.5">
-          <ul className="menu menu-horizontal px-1 space-x-1 md:text-lg md:font-medium">
+          <ul className="menu menu-horizontal px-1 space-x-1 md:text-base lg:text-lg md:font-medium">
             {navLinks}
           </ul>
         </div>
@@ -98,9 +98,9 @@ const Navbar = () => {
           {theme === 'dark' ? <LiaToggleOnSolid /> : <LiaToggleOffSolid />}
         </button>
 
-        {/* User / Auth */}
+        {/* User or Auth Buttons */}
         {user ? (
-          <div className="dropdown dropdown-end z-[50]">
+          <div className="dropdown dropdown-end z-[100]">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user.displayName}>
               <div className="w-10 rounded-full">
                 <img
@@ -116,28 +116,28 @@ const Navbar = () => {
                 <span className="text-xs text-base-content/70">{user.email}</span>
               </li>
               <li className="mt-2">
-                <button onClick={handleLogout} className="btn btn-sm btn-error text-white">
+                <button onClick={handleLogout} className="btn btn-sm btn-error text-white w-full">
                   Log out
                 </button>
               </li>
             </ul>
           </div>
         ) : (
-          <>
+          <div className="flex gap-2">
             <Link to="/login" className="btn btn-sm btn-primary text-white">
               Login
             </Link>
             <Link to="/register" className="btn btn-sm btn-primary text-white">
               Signup
             </Link>
-          </>
+          </div>
         )}
       </div>
 
-      {/* Mobile Menu (Dropdown) */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-[64px] left-0 w-full bg-base-100 shadow-md border-t border-base-300 lg:hidden animate-slideDown">
-          <ul className="menu menu-vertical px-4 py-3 space-y-2 text-lg font-medium">
+        <div className="absolute top-[65px] left-0 w-full bg-base-100 border-t border-base-300 shadow-lg lg:hidden animate-slideDown z-[99]">
+          <ul className="menu menu-vertical px-6 py-4 space-y-2 text-lg font-medium">
             {navLinks}
           </ul>
         </div>
