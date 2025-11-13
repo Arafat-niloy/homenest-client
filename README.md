@@ -69,59 +69,10 @@ HomeNest is a modern real estate listing platform where property owners can post
 
 ---
 
-## 🛠️ Getting Started
-
-Follow these steps to get your development environment set up and run the project locally.
-
-### 1. Prerequisites
+### Prerequisites
 
 * Node.js (v18+)
 * npm or yarn
 * MongoDB Atlas Account
 * Firebase Project (for Auth)
 
-### 2. Server-Side Setup
-
-1.  Clone the server repository:
-    ```bash
-    git clone [https://github.com/Arafat-niloy/homenest-server]
-    cd homenest-server
-    ```
-2.  Install server dependencies:
-    ```bash
-    npm install
-    ```
-3.  Create a `.env` file in the root directory and add your credentials:
-    ```env
-    PORT=5000
-    MONGODB_URI="your_mongodb_connection_string"
-    # Optional: For server-side token verification (Advanced)
-    # FIREBASE_ADMIN_SERVICE_ACCOUNT="your_service_account_config" 
-    ```
-4.  Run the server:
-    ```bash
-    npm start # or npm run dev
-    ```
-
-### 3. Client-Side Setup
-
-1.  Clone the client repository:
-    ```bash
-    git clone [https://github.com/Arafat-niloy/homenest-client]
-    cd homenest-client
-    ```
-2.  Install client dependencies:
-    ```bash
-    npm install
-    ```
-3.  Create a `.env` file in the root directory and add your credentials:
-    ```env
-    VITE_FIREBASE_API_KEY="your_firebase_api_key"
-    VITE_SERVER_BASE_URL="http://localhost:5000" # Or your Vercel URL
-    # Add other necessary Firebase config variables (Auth Domain, Project ID, etc.)
-    ```
-4.  Run the client application:
-    ```bash
-    npm run dev
-    ```
-    ---
