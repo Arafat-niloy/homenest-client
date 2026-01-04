@@ -26,12 +26,12 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
+        <NavLink to="/" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
+        <NavLink to="/all-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
           All Properties
         </NavLink>
       </li>
@@ -39,17 +39,17 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <NavLink to="/add-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
+            <NavLink to="/add-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
               Add Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-properties" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
+            <NavLink to="/my-properties" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
               My Properties
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-ratings" className={({ isActive }) => (isActive ? activeLinkClass : normalLinkClass)}>
+            <NavLink to="/my-ratings" className={({ isActive }) => isActive ? activeLinkClass : normalLinkClass}>
               My Ratings
             </NavLink>
           </li>
@@ -59,13 +59,13 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar shadow px-4 md:px-6 lg:px-10 bg-base-100 sticky top-0 z-[100]">
+    <nav className="navbar shadow px-4">
       {/* Left Section */}
       <div className="navbar-start flex items-center">
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="btn btn-ghost text-2xl mr-2 lg:hidden"
+          className="btn btn-ghost lg:hidden text-2xl mr-2"
           aria-label="Toggle menu"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
@@ -78,17 +78,17 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Center Menu (Tablet & Desktop) */}
-      <div className="hidden md:flex navbar-center">
+      {/* Desktop Menu */}
+      <div className="navbar-center hidden lg:flex">
         <div className="bg-base-200 rounded-full p-1.5">
-          <ul className="menu menu-horizontal px-1 space-x-1 md:text-base lg:text-lg md:font-medium">
+          <ul className="menu menu-horizontal px-1 space-x-1 md:text-lg md:font-medium">
             {navLinks}
           </ul>
         </div>
       </div>
 
-      {/* Right Section */}
-      <div className="navbar-end flex items-center space-x-2">
+      {/* Desktop Right Section */}
+      <div className="navbar-end hidden lg:flex items-center space-x-3">
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -98,9 +98,9 @@ const Navbar = () => {
           {theme === 'dark' ? <LiaToggleOnSolid /> : <LiaToggleOffSolid />}
         </button>
 
-        {/* User or Auth Buttons */}
+        {/* Auth Buttons */}
         {user ? (
-          <div className="dropdown dropdown-end z-[100]">
+          <div className="dropdown dropdown-end z-[50]">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user.displayName}>
               <div className="w-10 rounded-full">
                 <img
@@ -116,29 +116,73 @@ const Navbar = () => {
                 <span className="text-xs text-base-content/70">{user.email}</span>
               </li>
               <li className="mt-2">
-                <button onClick={handleLogout} className="btn btn-sm btn-error text-white w-full">
+                <button onClick={handleLogout} className="btn btn-sm btn-error text-white">
                   Log out
                 </button>
               </li>
             </ul>
           </div>
         ) : (
-          <div className="flex gap-2">
+          <>
             <Link to="/login" className="btn btn-sm btn-primary text-white">
               Login
             </Link>
             <Link to="/register" className="btn btn-sm btn-primary text-white">
               Signup
             </Link>
-          </div>
+          </>
         )}
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (Dropdown) */}
       {menuOpen && (
-        <div className="absolute top-[65px] left-0 w-full bg-base-100 border-t border-base-300 shadow-lg lg:hidden animate-slideDown z-[99]">
-          <ul className="menu menu-vertical px-6 py-4 space-y-2 text-lg font-medium">
+        <div className="absolute top-[64px] left-0 w-full bg-base-100 shadow-md border-t border-base-300 lg:hidden animate-slideDown">
+          <ul className="menu menu-vertical px-4 py-3 space-y-2 text-lg font-medium">
             {navLinks}
+
+            <hr className="my-2 border-base-300" />
+
+            {/* Theme Toggle (Mobile) */}
+            <li>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 py-2 text-base-content"
+              >
+                {theme === 'dark' ? <LiaToggleOnSolid className="text-2xl" /> : <LiaToggleOffSolid className="text-2xl" />}
+                <span>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
+              </button>
+            </li>
+
+            {/* Auth Buttons (Mobile) */}
+            <li className="flex flex-col gap-2">
+              {user ? (
+                <>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={user.photoURL || 'https://i.ibb.co/T41PS9v/avatar-default.png'}
+                      alt={user.displayName}
+                      className="w-10 h-10 rounded-full"
+                    />
+                    <div>
+                      <p className="font-semibold">{user.displayName}</p>
+                      <p className="text-xs text-base-content/70">{user.email}</p>
+                    </div>
+                  </div>
+                  <button onClick={handleLogout} className="btn btn-sm btn-error text-white mt-2">
+                    Log out
+                  </button>
+                </>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  <Link to="/login" className="btn btn-sm btn-primary text-white w-full">
+                    Login
+                  </Link>
+                  <Link to="/register" className="btn btn-sm btn-primary text-white w-full">
+                    Signup
+                  </Link>
+                </div>
+              )}
+            </li>
           </ul>
         </div>
       )}
